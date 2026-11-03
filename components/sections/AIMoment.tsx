@@ -137,19 +137,19 @@ export function AIMoment() {
               id="aiprod-title"
               className="t-d1 aiprod__title"
               lines={[
-                "Intelligence that",
+                "AI-native,",
                 <>
-                  does the <span className="em">work.</span>
+                  from <span className="em">day one.</span>
                 </>,
               ]}
             />
             <Reveal className="aiprod__intro" delay={0.15}>
               <p className="t-lead">
-                Agents, copilots and automations built on your real data and wired into your real systems, with evaluation and
-                guardrails from the first prototype.
+                Smart automation, predictive insight and customer-facing assistants, built into your systems from the start instead of
+                bolted on later.
               </p>
               <Button href="/contact" variant="ultra">
-                Book an AI readiness session
+                Get a free consultation
               </Button>
             </Reveal>
           </div>
@@ -160,9 +160,9 @@ export function AIMoment() {
                 <Assistant dark />
               </div>
               <div className="aiprod__meta">
-                <span className="mono t-ultra-l">A — Agents</span>
-                <h4>Sales &amp; service agents</h4>
-                <p>Qualify, book, follow up and update the CRM across WhatsApp, email and web, with a human hand-off when it matters.</p>
+                <span className="mono t-ultra-l">A — Assistants</span>
+                <h4>Customer-facing assistants</h4>
+                <p>Answer enquiries, qualify leads and book appointments on WhatsApp and the web, with a hand-off to your team when it matters.</p>
               </div>
             </Reveal>
             <Reveal className="aiprod__card" delay={0.1}>
@@ -170,9 +170,9 @@ export function AIMoment() {
                 <Dashboard dark />
               </div>
               <div className="aiprod__meta">
-                <span className="mono t-ultra-l">B — Copilots</span>
-                <h4>Decision copilots</h4>
-                <p>Ask the business a question in plain language and get an answer grounded in your warehouse.</p>
+                <span className="mono t-ultra-l">B — Insight</span>
+                <h4>Predictive insight</h4>
+                <p>See demand, cash flow and stock coming before it arrives, from the data your business already has.</p>
               </div>
             </Reveal>
             <Reveal className="aiprod__card" delay={0.2}>
@@ -181,8 +181,8 @@ export function AIMoment() {
               </div>
               <div className="aiprod__meta">
                 <span className="mono t-ultra-l">C — Automation</span>
-                <h4>Agentic workflows</h4>
-                <p>End-to-end flows across ERP, finance and operations that run themselves and escalate the exceptions.</p>
+                <h4>Smart automation</h4>
+                <p>Orders, invoices, follow-ups and reports that run themselves, connected to your ERP, CRM and accounting.</p>
               </div>
             </Reveal>
           </div>

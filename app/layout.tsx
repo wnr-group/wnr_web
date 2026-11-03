@@ -21,14 +21,14 @@ const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["nor
 const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--ff-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://wnradvisory.com"), // PLACEHOLDER domain
-  title: { default: `${site.name} — Digital engineering studio`, template: `%s — ${site.name}` },
+  metadataBase: new URL("https://wnradvisory.netlify.app"),
+  title: { default: `${site.name} · ${site.footerLine}`, template: `%s · ${site.name}` },
   description: site.description,
   openGraph: { title: site.name, description: site.description, type: "website" },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f1ede6",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };

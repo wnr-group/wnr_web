@@ -2,123 +2,90 @@
 
 import { useRef } from "react";
 import { CoreGL } from "@/components/three/CoreGL";
-import { Dashboard, Assistant, Mobile } from "@/components/mockups/Mockups";
+import { Dashboard, Assistant } from "@/components/mockups/Mockups";
 import { Button } from "@/components/ui/Button";
-import { useMedia, usePointerTilt, useScrollProgress } from "@/lib/motion";
+import { badges } from "@/lib/content";
+import { usePointerTilt } from "@/lib/motion";
 
-/* Satellite interfaces, tethered to the layer of the Core they run on. */
-const sats = [
-  { key: "asst", x: 25, y: 38, d: 1.5, r: -3, el: <Assistant />, cap: "AI sales agent", layer: "L4" },
-  { key: "dash", x: 86, y: 24, d: 0.8, r: 3, el: <Dashboard />, cap: "Operations intelligence", layer: "L2" },
-  { key: "mobile", x: 89, y: 52, d: 1.2, r: 5, el: <Mobile />, cap: "Customer app", layer: "L5" },
-] as const;
-
-const CORE = { x: 61, y: 33 };
-
+/* Professional, conventional hero: message on the left, one contained
+   visual on the right. No scroll-jacking, nothing overlapping the copy. */
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const progress = useRef(0);
-  const narrow = useMedia("(max-width: 900px)");
-  useScrollProgress(ref, (p) => (progress.current = p));
-  usePointerTilt(ref);
+  usePointerTilt(ref, 1);
 
   return (
     <section ref={ref} className="hero" aria-labelledby="hero-title">
-      <div className="hero__sticky">
-        <div className="hero__bg" aria-hidden />
-
-        <div className="hero__stage">
-          <CoreGL
-            className="hero__gl"
-            progress={narrow ? undefined : progress}
-            size={narrow ? 0.5 : 0.46}
-            center={narrow ? [0, 0.02] : [0.16, 0.16]}
-            labels={!narrow}
-            drift={0.17}
-          />
-
-          <svg className="hero__tethers" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden>
-            {sats.map((s, i) => (
-              <path
-                key={s.key}
-                d={`M${s.x},${s.y} C${(s.x + CORE.x) / 2},${s.y} ${(s.x + CORE.x) / 2},${CORE.y} ${CORE.x},${CORE.y}`}
-                style={{ ["--i" as string]: i }}
-              />
-            ))}
-          </svg>
-
-          {sats.map((s, i) => (
-            <figure
-              key={s.key}
-              className={`sat sat--${s.key}`}
-              style={{
-                left: `${s.x}%`,
-                top: `${s.y}%`,
-                ["--d" as string]: s.d,
-                ["--r" as string]: `${s.r}deg`,
-                ["--i" as string]: i,
-                ["--dx" as string]: ((s.x - CORE.x) / 50).toFixed(3),
-                ["--dy" as string]: ((s.y - CORE.y) / 50).toFixed(3),
-              }}
-              aria-hidden
-            >
-              <div className="sat__inner">{s.el}</div>
-              <figcaption className="sat__cap mono">
-                <b>{s.layer}</b> {s.cap}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-
-        <div className="hero__meta wrap" aria-hidden>
-          <span className="label label--dot">Digital engineering studio</span>
-          <span className="label hero__meta-mid">Commerce · AI · Enterprise · Data · Cloud</span>
-          <span className="label">Sheet 01 — The Core</span>
-        </div>
-
-        <div className="hero__copy wrap">
+      <div className="hero__bg" aria-hidden />
+      <div className="wrap hero__grid">
+        <div className="hero__copy">
+          <span className="hero__eyebrow">
+            <i aria-hidden /> Technology partner for growing businesses
+          </span>
           <h1 id="hero-title" className="hero__title">
-            <span className="hero__line">
-              <span>
-                From ambitious <span className="em">ideas</span> to
-              </span>
-            </span>{" "}
-            <span className="hero__line">
-              <span>
-                intelligent digital experiences<span className="t-ultra">.</span>
-              </span>
-            </span>
+            We build the <span className="em">operational brain</span> of your business through technology.
           </h1>
-          <div className="hero__foot">
-            <p className="hero__lead">
-              WnR Advisory designs, engineers and connects the platforms modern businesses run on: commerce, enterprise
-              systems, data and AI, built as one coherent core.
-            </p>
-            <div className="hero__ctas">
-              <Button href="/contact" variant="ultra">
-                Start a project
-              </Button>
-              <Button href="/work" variant="light">
-                See our work
-              </Button>
-            </div>
+          <p className="hero__lead">
+            Websites, web apps, custom software, e-commerce and complete business suites. One partner from idea to growth.
+          </p>
+          <div className="hero__ctas">
+            <Button href="/contact" variant="ultra">
+              Start a project
+            </Button>
+            <Button href="/work" variant="light">
+              See our work
+            </Button>
+          </div>
+          <ul className="hero__checks">
+            {badges.map((b) => (
+              <li key={b}>
+                <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden>
+                  <circle cx="8" cy="8" r="8" fill="var(--mint)" />
+                  <path d="M4.8 8.2 7 10.3l4.2-4.6" fill="none" stroke="var(--ultra)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                {b}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="hero__visual" aria-hidden>
+          <div className="hero__panel">
+            <div className="hero__panelgrid" />
+            <CoreGL className="hero__gl" size={0.56} center={[0, 0.06]} labels={false} />
+          </div>
+          <div className="hero__card hero__card--dash">
+            <Dashboard />
+          </div>
+          <div className="hero__card hero__card--asst">
+            <Assistant />
+          </div>
+          <div className="hero__chip">
+            <b>75+</b>
+            <span>happy customers</span>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <div className="hero__explain" aria-hidden>
-          <span className="label">Exploded view</span>
-          <p>
-            Five layers.
-            <br />
-            <span className="em">One</span> platform.
-          </p>
-          <span className="hero__explain-note mono">Every product we ship sits on the same engineered core.</span>
-        </div>
-
-        <div className="hero__cue mono" aria-hidden>
-          <span className="hero__cue-bar" />
-          Scroll to open the core
-        </div>
+/* Proof strip directly under the hero. */
+export function Stats() {
+  const stats = [
+    { v: "75+", l: "Happy customers" },
+    { v: "7+", l: "Industries served" },
+    { v: "6", l: "Core services" },
+    { v: "1", l: "Accountable team, idea to growth" },
+  ];
+  return (
+    <section className="stats" aria-label="WnR in numbers">
+      <div className="wrap stats__grid">
+        {stats.map((s) => (
+          <div key={s.l} className="stats__item">
+            <b>{s.v}</b>
+            <span>{s.l}</span>
+          </div>
+        ))}
       </div>
     </section>
   );

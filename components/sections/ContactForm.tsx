@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { capabilities, site } from "@/lib/content";
+import { projectTypes, site } from "@/lib/content";
 import { Arrow } from "@/components/ui/Icons";
 
 const budgets = ["< ₹10L", "₹10–25L", "₹25–75L", "₹75L+", "Not sure yet"];
@@ -61,15 +61,15 @@ export function ContactForm() {
           <span className="t-ultra">01</span> What can we help with?
         </legend>
         <div className="cform__chips">
-          {capabilities.map((c) => (
+          {projectTypes.map((t) => (
             <button
               type="button"
-              key={c.slug}
-              className={`cform__chip ${interests.includes(c.title) ? "is-on" : ""}`}
-              aria-pressed={interests.includes(c.title)}
-              onClick={() => toggle(c.title)}
+              key={t}
+              className={`cform__chip ${interests.includes(t) ? "is-on" : ""}`}
+              aria-pressed={interests.includes(t)}
+              onClick={() => toggle(t)}
             >
-              {c.title}
+              {t}
             </button>
           ))}
         </div>
@@ -134,12 +134,12 @@ export function ContactForm() {
 
       <div className="cform__submit">
         <button type="submit" className="btn btn--ultra">
-          <span>Send the brief</span>
+          <span>Get a free consultation</span>
           <span className="btn__icon">
             <Arrow />
           </span>
         </button>
-        <span className="mono cform__note">Replies within one working day. NDA on request.</span>
+        <span className="mono cform__note">Replies within one working day.</span>
       </div>
     </form>
   );

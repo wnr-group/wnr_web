@@ -10,44 +10,45 @@
    ===================================================================== */
 
 :root {
-  /* — Surfaces (dark-first) — names kept for continuity:
-       bone = page ground, paper = raised, sand = surface, ink = primary text — */
-  --bone: #07070b;
-  --paper: #0c0c12;
-  --sand: #14141d;
-  --stone: #2a2a37;
-  --mute: #77758a;
-  --ink-3: #a19fb2;
-  --ink-2: #d4d2df;
-  --ink: #f5f4fa;
-  --on-light: #07070b;
+  /* — Surfaces: white-first. bone = page, paper = tinted section,
+       sand = surface, ink = primary text — */
+  --bone: #ffffff;
+  --paper: #f3f8f5;
+  --sand: #e6f0ea;
+  --stone: #c7d6ce;
+  --mute: #7a8a82;
+  --ink-3: #4d5d55;
+  --ink-2: #243530;
+  --ink: #0a1f17;
+  --on-light: #ffffff;
 
-  /* — Signature: Electric Violet — */
-  --ultra: #7b5cff;
-  --ultra-deep: #5b3bff;
-  --ultra-ink: #2a1a8f;
-  --ultra-soft: rgba(123, 92, 255, 0.14);
-  --ultra-glow: rgba(123, 92, 255, 0.5);
-  --ultra-light: #b3a3ff;
+  /* — Signature: WnR Emerald — */
+  --ultra: #0a8a5c;
+  --ultra-deep: #066a46;
+  --ultra-ink: #043d29;
+  --ultra-soft: rgba(10, 138, 92, 0.09);
+  --ultra-glow: rgba(10, 138, 92, 0.3);
+  --ultra-light: #6fe3ab;
+  --mint: #d9f5e6;
+  --lime: #c6f36a;
 
-  /* — Logo (kept exactly as designed) — */
-  --logo-blue: #3a2bff;
+  --logo-blue: #0a8a5c;
 
   /* — Signal — */
-  --ember: #ff6a3d;
-  --ember-soft: rgba(255, 106, 61, 0.16);
-  --leaf: #2fd38c;
+  --ember: #ff7a45;
+  --ember-soft: #ffe7dc;
+  --leaf: #12a26b;
 
-  /* — Night (deepest, for the AI moment & footer) — */
-  --night: #000000;
-  --night-2: #0d0d15;
-  --night-3: #16162a;
-  --night-line: rgba(255, 255, 255, 0.08);
+  /* — Forest (deep green) for the AI moment & footer — */
+  --night: #052016;
+  --night-2: #0a2c20;
+  --night-3: #10392a;
+  --night-line: rgba(255, 255, 255, 0.09);
 
   /* — Lines — */
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.18);
-  --line-ultra: rgba(123, 92, 255, 0.55);
+  --line: rgba(10, 31, 23, 0.1);
+  --line-strong: rgba(10, 31, 23, 0.22);
+  --line-ultra: rgba(10, 138, 92, 0.45);
 
   /* — Type families (overridden by next/font variables) — */
   --font-sans: var(--ff-sans, "Instrument Sans"), "Inter Display", "Inter", system-ui, sans-serif;
@@ -55,12 +56,12 @@
   --font-mono: var(--ff-mono, "JetBrains Mono"), ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   /* — Fluid type scale — */
-  --fs-mega: clamp(3.4rem, 9.2vw, 10.5rem);
-  --fs-hero: clamp(2.9rem, 7.2vw, 8.4rem);
-  --fs-d1: clamp(2.4rem, 5.6vw, 6rem);
-  --fs-d2: clamp(2rem, 4vw, 4.2rem);
-  --fs-d3: clamp(1.6rem, 2.6vw, 2.6rem);
-  --fs-lead: clamp(1.15rem, 1.5vw, 1.5rem);
+  --fs-mega: clamp(2.5rem, 6vw, 6.5rem);
+  --fs-hero: clamp(2.3rem, 4.6vw, 5.4rem);
+  --fs-d1: clamp(2rem, 3.8vw, 4rem);
+  --fs-d2: clamp(1.7rem, 2.8vw, 2.9rem);
+  --fs-d3: clamp(1.3rem, 1.7vw, 1.75rem);
+  --fs-lead: clamp(1.02rem, 1.15vw, 1.2rem);
   --fs-body: 1rem;
   --fs-small: 0.875rem;
   --fs-micro: 0.6875rem;
@@ -80,9 +81,9 @@
   --r-sm: 8px;
   --r-md: 14px;
   --r-lg: 22px;
-  --shadow-ui: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 30px 60px -30px rgba(0, 0, 0, 0.8),
-    0 12px 24px -12px rgba(0, 0, 0, 0.6);
-  --shadow-float: 0 60px 120px -40px rgba(91, 59, 255, 0.45), 0 24px 48px -20px rgba(0, 0, 0, 0.8);
+  --shadow-ui: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 30px 60px -30px rgba(5, 45, 30, 0.25),
+    0 12px 24px -12px rgba(5, 45, 30, 0.12);
+  --shadow-float: 0 50px 100px -40px rgba(4, 80, 52, 0.35), 0 18px 40px -18px rgba(5, 45, 30, 0.2);
 
   /* — Motion — */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);

@@ -1,18 +1,17 @@
 import Link from "next/link";
-import { photos } from "@/lib/content";
+import { photos, toolkit } from "@/lib/content";
 import { Photo } from "@/components/ui/Photo";
 import { SheetHeader } from "@/components/ui/Button";
 import { Reveal, RevealLines } from "@/components/ui/Reveal";
 import { ArrowRight } from "@/components/ui/Icons";
 
-const platforms = ["AWS", "Google Cloud", "Azure", "Shopify", "Salesforce", "Odoo", "Snowflake", "OpenAI", "Anthropic", "Stripe", "Razorpay", "Kubernetes"];
 
 /* The human chapter: who builds the systems, and how they work with you. */
 export function People() {
   return (
     <section className="people section" aria-labelledby="people-title">
       <div className="wrap">
-        <SheetHeader fig="02.1" title="The people" aside="Design + engineering, one table" />
+        <SheetHeader fig="02.1" title="The people" aside="One accountable team" />
 
         <div className="people__top">
           <div className="people__copy">
@@ -29,12 +28,12 @@ export function People() {
               ]}
             />
             <Reveal as="p" className="t-lead people__lead" delay={0.1}>
-              Every system starts with a conversation. We workshop with the people who will use it, sketch before we code, and ship
-              alongside your team until it runs on its own.
+              Every project starts with a conversation. We map your workflows, design interfaces you review early, and stay on after
+              launch to train your team and keep improving.
             </Reveal>
             <Reveal delay={0.2}>
-              <Link href="/studio" className="link-line">
-                Meet the studio <ArrowRight />
+              <Link href="/about" className="link-line">
+                Meet the team <ArrowRight />
               </Link>
             </Reveal>
           </div>
@@ -52,10 +51,10 @@ export function People() {
           <Photo photo={photos.hands} className="people__c" sizes="(max-width: 900px) 100vw, 24vw" caption="One shared roadmap" />
         </div>
 
-        <div className="stack" aria-label="Platforms we build on">
-          <span className="label">Platforms we build on</span>
+        <div className="stack" aria-label="Our toolkit">
+          <span className="label">Our toolkit</span>
           <ul className="stack__list">
-            {platforms.map((p) => (
+            {toolkit.map((p) => (
               <li key={p}>{p}</li>
             ))}
           </ul>

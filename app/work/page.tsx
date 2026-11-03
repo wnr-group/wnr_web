@@ -22,7 +22,7 @@ export default function WorkPage() {
             in <span className="em">production.</span>
           </>,
         ]}
-        lead="Every project is a system: an interface people love, built on infrastructure that keeps running."
+        lead="Sample projects showing the kind of systems we build. Replace with your own case studies."
       />
       <WorkGrid />
       <CTA />

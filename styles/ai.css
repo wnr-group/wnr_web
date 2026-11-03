@@ -18,7 +18,7 @@
   height: 100svh;
   min-height: 680px;
   overflow: hidden;
-  background: radial-gradient(60% 50% at 50% 62%, rgba(123, 92, 255, 0.16), transparent 70%), var(--night);
+  background: radial-gradient(60% 50% at 50% 62%, rgba(16, 170, 110, 0.22), transparent 70%), var(--night);
   clip-path: inset(calc((1 - var(--e)) * 9vh) calc((1 - var(--e)) * 6vw) calc((1 - var(--e)) * 0vh) round calc((1 - var(--e)) * 36px));
 }
 .aim__sticky > * {
@@ -46,7 +46,7 @@
   height: 70vmin;
   transform: translate(-50%, -50%) scale(calc(0.4 + var(--t2) * 0.8));
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(58, 43, 255, 0.42), transparent);
+  background: radial-gradient(closest-side, rgba(10, 138, 92, 0.42), transparent);
   opacity: calc(var(--t2) * 0.9);
 }
 .aim__top {
@@ -79,7 +79,7 @@
   filter: none;
 }
 .aim__head .em {
-  color: #a79fff;
+  color: var(--ultra-light);
 }
 .aim__muted {
   color: rgba(255, 255, 255, 0.38);
@@ -147,10 +147,10 @@
   stroke-width: 0.16;
   stroke-dasharray: 100;
   stroke-dashoffset: calc(100 - var(--t2) * 100);
-  filter: drop-shadow(0 0 6px rgba(58, 43, 255, 0.8));
+  filter: drop-shadow(0 0 6px rgba(10, 138, 92, 0.8));
 }
 .aim[data-phase="2"] .aim__wires path {
-  stroke: #8d84ff;
+  stroke: #6fe3ab;
   stroke-dasharray: 1 1.6;
   animation: wire-flow 1.2s linear infinite;
 }
@@ -210,11 +210,11 @@
 }
 .aim[data-phase="1"] .proc,
 .aim[data-phase="2"] .proc {
-  border: 1px solid rgba(141, 132, 255, 0.5);
+  border: 1px solid rgba(111, 227, 171, 0.5);
 }
 .aim[data-phase="2"] .proc {
   background: #16162a;
-  box-shadow: 0 0 0 1px rgba(141, 132, 255, 0.35), 0 20px 40px -20px rgba(58, 43, 255, 0.6);
+  box-shadow: 0 0 0 1px rgba(111, 227, 171, 0.35), 0 20px 40px -20px rgba(10, 138, 92, 0.6);
 }
 .aim[data-phase="2"] .proc::before {
   background: #3fe0a0;
@@ -251,7 +251,7 @@
   justify-content: center;
   gap: 0.2rem;
   background: radial-gradient(circle at 35% 30%, #6b5fff, var(--ultra) 50%, var(--ultra-ink));
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset, 0 0 80px rgba(58, 43, 255, 0.7);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset, 0 0 80px rgba(10, 138, 92, 0.7);
   transform: scale(calc(var(--t2) * (1 - var(--t3))));
   text-align: center;
 }
@@ -271,7 +271,7 @@
   height: 240px;
   margin: -120px 0 0 -120px;
   border-radius: 50%;
-  border: 1px solid rgba(141, 132, 255, 0.35);
+  border: 1px solid rgba(111, 227, 171, 0.35);
   transform: scale(calc(var(--t2) * (1 + var(--t3) * 1.6)));
   opacity: calc(var(--t2) * (1 - var(--t3) * 0.6));
 }
@@ -280,7 +280,7 @@
   height: 360px;
   margin: -180px 0 0 -180px;
   border-style: dashed;
-  border-color: rgba(141, 132, 255, 0.2);
+  border-color: rgba(111, 227, 171, 0.2);
 }
 .aim__console {
   position: absolute;
@@ -292,7 +292,7 @@
 }
 .aim__console .ui {
   --ui: clamp(5.2px, 0.62vw, 8px);
-  box-shadow: 0 0 0 1px rgba(141, 132, 255, 0.45), 0 0 120px rgba(58, 43, 255, 0.45), 0 40px 80px -30px #000;
+  box-shadow: 0 0 0 1px rgba(111, 227, 171, 0.45), 0 0 120px rgba(10, 138, 92, 0.45), 0 40px 80px -30px #000;
 }
 
 @media (max-width: 900px) {
@@ -349,7 +349,7 @@
   margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 .aiprod__title .em {
-  color: #a79fff;
+  color: var(--ultra-light);
 }
 .aiprod__intro {
   display: flex;
@@ -379,7 +379,7 @@
   position: relative;
   height: clamp(250px, 25vw, 360px);
   overflow: hidden;
-  background: radial-gradient(80% 80% at 50% 100%, rgba(58, 43, 255, 0.35), transparent 70%), var(--night-3);
+  background: radial-gradient(80% 80% at 50% 100%, rgba(10, 138, 92, 0.35), transparent 70%), var(--night-3);
 }
 .aiprod__vis .ui {
   position: absolute;
@@ -410,7 +410,7 @@
   border-top: 1px solid var(--night-line);
 }
 .t-ultra-l {
-  color: #a79fff;
+  color: var(--ultra-light);
   font-size: 0.64rem;
 }
 .aiprod__meta h4 {

@@ -16,7 +16,6 @@ Requires Node 18.18+ (Node 20 or 22 recommended).
 
 Everything editable lives in **`lib/content.ts`**:
 
-- `site.email`, `site.phone`, `site.location`, `site.social`: placeholder contact details
 - `projects`: **sample portfolio entries**. Replace them with real work, real client permissions and real outcomes.
 - `metadataBase` in `app/layout.tsx`: set your real domain
 - Budget ranges in `components/sections/ContactForm.tsx`
@@ -47,19 +46,22 @@ styles/
   hero.css / sections.css / ai.css / pages.css / mockups.css / chrome.css
 ```
 
-## Design system
+## Design system (green & white)
 
 | Token | Value | Use |
 |---|---|---|
-| `--bone` | `#F1EDE6` | Page ground (drafting paper) |
-| `--ink` | `#101014` | Type, dark surfaces |
-| `--ultra` | `#3A2BFF` | **Signature: WnR Ultramarine.** The "built" state, emphasis, CTAs |
-| `--ember` | `#FF6A3D` | Signal only: live / status / alerts |
-| `--night` | `#09090F` | Reserved for the AI & Automation moment and the footer |
+| `--bone` | `#FFFFFF` | Page ground |
+| `--paper` / `--sand` | `#F3F8F5` / `#E6F0EA` | Tinted sections, surfaces |
+| `--ink` | `#0A1F17` | Type (near-black green) |
+| `--ultra` | `#0A8A5C` | **Signature: WnR Emerald.** CTAs, emphasis, the Core's Intelligence layer |
+| `--lime` | `#C6F36A` | Small highlights only |
+| `--night` | `#052016` | Deep forest: the AI section, contact card, footer |
 
-**Type:** Instrument Sans (display & body, tight negative tracking), Instrument Serif *italic* (one emphasis word per headline), JetBrains Mono (annotations, figure numbers, data). All three load through `next/font`.
+**Type:** Instrument Sans, Instrument Serif *italic* for emphasis words (and "Advisory" in the logo), JetBrains Mono for labels.
 
-**Editorial grammar:** every section opens with a blueprint "title block" (`FIG. 03 — Capabilities - - - - aside`). Headlines are oversized and asymmetric. Colour is withheld until it means something.
+**Logo:** the header uses `public/logo.png` when present, then the logo file on the live Netlify site, then the "WnR *Advisory*" wordmark alone. Copy your `logo.png` into `public/` so it never depends on the old site.
+
+**Content:** company details, services, industries, process, "Why WnR", toolkit, FAQs and contact info come from the current site (wnradvisory.netlify.app). The projects under Work are samples. Replace them with real case studies.
 
 ## Signature moments
 

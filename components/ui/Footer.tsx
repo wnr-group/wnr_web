@@ -8,7 +8,7 @@ export function Footer() {
       <div className="wrap">
         <div className="ftr__top">
           <p className="ftr__statement t-d2">
-            Engineering the systems <span className="em">behind</span> ambitious companies.
+            Building <span className="em">what’s next</span> for growing businesses.
           </p>
           <a href={`mailto:${site.email}`} className="ftr__mail">
             <span className="label">Write to us</span>
@@ -20,7 +20,7 @@ export function Footer() {
 
         <div className="ftr__cols">
           <div>
-            <span className="label ftr__h">Studio</span>
+            <span className="label ftr__h">Company</span>
             <ul>
               {nav.map((n) => (
                 <li key={n.href}>
@@ -30,21 +30,23 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <span className="label ftr__h">Capabilities</span>
+            <span className="label ftr__h">Services</span>
             <ul>
               {capabilities.map((c) => (
                 <li key={c.slug}>
-                  <Link href={`/capabilities#${c.slug}`}>{c.title}</Link>
+                  <Link href={`/services#${c.slug}`}>{c.title}</Link>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <span className="label ftr__h">Elsewhere</span>
+            <span className="label ftr__h">Connect</span>
             <ul>
               {site.social.map((s) => (
                 <li key={s.label}>
-                  <a href={s.href}>{s.label}</a>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer">
+                    {s.label}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -52,9 +54,17 @@ export function Footer() {
           <div>
             <span className="label ftr__h">Contact</span>
             <ul>
-              <li>{site.location}</li>
+              <li>{site.company}</li>
+              {site.address.map((l) => (
+                <li key={l} className="ftr__addr">
+                  {l}
+                </li>
+              ))}
               <li>
                 <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+              </li>
+              <li>
+                <a href={`mailto:${site.email}`}>{site.email}</a>
               </li>
             </ul>
           </div>
@@ -65,8 +75,10 @@ export function Footer() {
         </div>
 
         <div className="ftr__base">
-          <span className="mono">© {new Date().getFullYear()} {site.name}</span>
-          <span className="mono">Sheet 06 / 06 — Drawn &amp; engineered in-house</span>
+          <span className="mono">
+            © {new Date().getFullYear()} {site.name} · {site.footerLine}
+          </span>
+          <span className="mono">{site.location}</span>
           <a href="#top" className="mono">
             Back to top ↑
           </a>

@@ -21,11 +21,4 @@ export const Mark = ({ size = 28, ...p }: SVGProps<SVGSVGElement> & { size?: num
   </svg>
 );
 
-export const Logo = ({ className = "" }: { className?: string }) => (
-  <span className={`logo ${className}`}>
-    <Mark />
-    <span className="logo__word">
-      W<span className="em">n</span>R<span className="logo__sub">Advisory</span>
-    </span>
-  </span>
-);
+export { Logo } from "./Logo";

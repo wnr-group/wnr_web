@@ -20,6 +20,53 @@ const Chrome = ({ url, dark }: { url: string; dark?: boolean }) => (
   </div>
 );
 
+/* ---------- 0. Website ---------- */
+export function Website({ className = "", style }: P) {
+  return (
+    <div className={`ui ui--site ${className}`} style={style}>
+      <Chrome url="yourbrand.com" />
+      <div className="ws-nav">
+        <span className="ws-logo">
+          <i /> Northbay
+        </span>
+        <span>About</span>
+        <span>Services</span>
+        <span>Work</span>
+        <span className="ws-cta">Get a quote</span>
+      </div>
+      <div className="ws-hero">
+        <div>
+          <span className="ui-kicker">Est. 1998 · Chennai</span>
+          <strong>Fresh food, delivered daily.</strong>
+          <p>Wholesale supply for restaurants and hotels across South India.</p>
+          <div className="ws-btns">
+            <span>Order now</span>
+            <span>Our story</span>
+          </div>
+        </div>
+        <div className="ws-art" aria-hidden>
+          <i />
+          <i />
+          <i />
+        </div>
+      </div>
+      <div className="ws-feats">
+        {[
+          ["Same-day delivery", "Across 12 cities"],
+          ["Quality checked", "Every batch, every day"],
+          ["Bulk pricing", "For businesses"],
+        ].map(([a, b]) => (
+          <div className="ws-feat" key={a}>
+            <i />
+            <b>{a}</b>
+            <span>{b}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ---------- 1. Storefront ---------- */
 export function Storefront({ className = "", style }: P) {
   return (
@@ -355,6 +402,8 @@ export function Workflow({ className = "", style, dark }: P) {
 
 export function Mockup({ kind, ...p }: P & { kind: MockupKind }) {
   switch (kind) {
+    case "website":
+      return <Website {...p} />;
     case "storefront":
       return <Storefront {...p} />;
     case "dashboard":

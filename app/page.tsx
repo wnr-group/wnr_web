@@ -1,25 +1,27 @@
-import { Hero } from "@/components/sections/Hero";
-import { Manifesto } from "@/components/sections/Manifesto";
-import { Marquee } from "@/components/sections/Marquee";
-import { People } from "@/components/sections/People";
+import { Hero, Stats } from "@/components/sections/Hero";
 import { Capabilities } from "@/components/sections/Capabilities";
+import { Principles, CTA, FAQ } from "@/components/sections/Closing";
+import { WorkIndex } from "@/components/sections/WorkIndex";
 import { AIMoment } from "@/components/sections/AIMoment";
 import { Process } from "@/components/sections/Process";
-import { WorkIndex } from "@/components/sections/WorkIndex";
-import { Principles, CTA } from "@/components/sections/Closing";
+import { People } from "@/components/sections/People";
+import { Marquee } from "@/components/sections/Marquee";
 
+/* Order follows how a buyer decides: what you do → proof → why you →
+   evidence → how you work → who you are → questions → contact. */
 export default function Home() {
   return (
     <>
       <Hero />
-      <Manifesto />
+      <Stats />
+      <Capabilities />
+      <Principles />
+      <WorkIndex limit={4} />
+      <AIMoment />
+      <Process />
       <People />
       <Marquee />
-      <Capabilities />
-      <AIMoment />
-      <WorkIndex limit={6} />
-      <Process />
-      <Principles />
+      <FAQ />
       <CTA />
     </>
   );

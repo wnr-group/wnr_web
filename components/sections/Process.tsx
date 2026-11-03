@@ -6,7 +6,7 @@ export function Process() {
   return (
     <section className="proc-sec section" aria-labelledby="process-title">
       <div className="wrap">
-        <SheetHeader fig="05" title="Method" aside="Brief → production" />
+        <SheetHeader fig="05" title="How we work" aside="Idea → growth" />
         <div className="proc-sec__head">
           <RevealLines
             as="h2"
@@ -14,13 +14,13 @@ export function Process() {
             className="t-d1"
             lines={[
               <>
-                From <span className="em">brief</span>
+                From <span className="em">idea</span>
               </>,
-              "to production.",
+              "to growth.",
             ]}
           />
           <Reveal as="p" className="t-lead proc-sec__lead" delay={0.1}>
-            A calm, visible process. You see the blueprint before we build, and working software every two weeks after.
+            Four clear steps, with progress you can see at every one, and a team that stays with you after launch.
           </Reveal>
         </div>
         <ol className="proc-sec__steps">

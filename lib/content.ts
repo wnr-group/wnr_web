@@ -1,26 +1,61 @@
 /* ------------------------------------------------------------------
    WnR Advisory — site content
    ------------------------------------------------------------------
-   Everything editable lives here. Contact details and every project in
-   `projects` are PLACEHOLDERS written to show the design. Replace them
-   with real work, real client permissions and real figures before launch.
+   Everything editable lives here. Company details, services, process,
+   FAQs and contact info come from the current WnR site. Every project in
+   `projects` is a SAMPLE written to show the layout. Replace them with
+   real work, client permissions and real figures before launch.
 ------------------------------------------------------------------- */
 
 export const site = {
   name: "WnR Advisory",
   short: "WnR",
-  tagline: "From ambitious ideas to intelligent digital experiences.",
+  tagline: "We build the operational brain of your business through technology.",
   description:
-    "WnR Advisory is a digital engineering studio. We design, build and connect commerce platforms, enterprise systems, data products and AI automation for companies with serious ambitions.",
-  email: "hello@wnradvisory.com", // PLACEHOLDER
-  phone: "+91 00000 00000", // PLACEHOLDER
-  location: "India — working worldwide", // PLACEHOLDER
+    "WnR Advisory builds websites, web & mobile apps, custom software, e-commerce and end-to-end business suites. One partner from idea to growth.",
+  footerLine: "Building What’s Next",
+  logo: "/logo.png", // put your logo at public/logo.png
+  logoFallback: "https://wnradvisory.netlify.app/assets/logo.png",
+  email: "admin@wnradvisory.com",
+  phone: "+91 90801 21533",
+  whatsapp: "https://wa.me/919080121533",
+  instagram: "https://instagram.com/wnr__group",
+  company: "WnR Groups",
+  address: ["115 D, First Floor, TIDEL Park", "No. 4, Rajiv Gandhi Salai, Taramani", "Chennai 600113"],
+  location: "Chennai, India",
   social: [
-    { label: "LinkedIn", href: "#" },
-    { label: "GitHub", href: "#" },
-    { label: "Dribbble", href: "#" },
+    { label: "WhatsApp", href: "https://wa.me/919080121533" },
+    { label: "Instagram", href: "https://instagram.com/wnr__group" },
   ],
 };
+
+/* Headline proof points (from the current WnR site) */
+export const badges = ["75+ happy customers", "AI-native builds", "End-to-end suites"];
+
+export const industries = ["Food", "Travel", "Recruitment", "Gaming", "Retail", "Manufacturing", "Energy"];
+
+export const toolkit = ["React", "Next.js", "Node.js", "Supabase", "Shopify", "Flutter", "Python", "AI & LLMs", "Cloud", "Analytics"];
+
+export const projectTypes = ["Website", "Web / Mobile App", "Custom Software", "E-Commerce", "Business Suite / ERP", "AI Automation"];
+
+export const faqs = [
+  {
+    q: "How do we get started?",
+    a: "Message us on WhatsApp or give us a call. We’ll understand what you need and come back with a clear plan and estimate.",
+  },
+  {
+    q: "How long does a project take?",
+    a: "A business website can launch in a few weeks. Apps and business suites are delivered in phases, so you see working software early and often.",
+  },
+  {
+    q: "Do you support us after launch?",
+    a: "Yes. We train your team, stay on for support, and keep improving the product as your business grows.",
+  },
+  {
+    q: "Can you work with the tools we already use?",
+    a: "Yes. We integrate with your payments, CRM, accounting and other existing systems rather than asking you to start over.",
+  },
+];
 
 /* ------------------------------------------------------------------
    Photography — free-licence Unsplash images (unsplash.com/license),
@@ -45,10 +80,10 @@ export const photos = {
 } satisfies Record<string, Photo>;
 
 export const nav = [
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
   { label: "Work", href: "/work" },
-  { label: "Capabilities", href: "/capabilities" },
-  { label: "Studio", href: "/studio" },
-  { label: "Contact", href: "/contact" },
+  { label: "Let’s talk", href: "/contact" },
 ];
 
 /* The Core — five layers every WnR platform is built on. */
@@ -62,7 +97,7 @@ export const layers: { id: LayerId; code: string; name: string; note: string }[]
   { id: "foundation", code: "L1", name: "Foundation", note: "Cloud, APIs, integration" },
 ];
 
-export type MockupKind = "storefront" | "dashboard" | "assistant" | "mobile" | "erp" | "workflow";
+export type MockupKind = "website" | "storefront" | "dashboard" | "assistant" | "mobile" | "erp" | "workflow";
 
 export type Capability = {
   slug: string;
@@ -78,76 +113,76 @@ export type Capability = {
 
 export const capabilities: Capability[] = [
   {
-    slug: "product-engineering",
+    slug: "websites",
     index: "01",
-    title: "Product Engineering",
-    kicker: "Web & mobile products",
+    title: "Websites",
+    kicker: "Corporate sites & landing pages",
     summary:
-      "Customer-facing products designed and engineered as one discipline: research, interface design, native and cross-platform apps, and the platform underneath.",
+      "Fast, search-friendly websites that tell your story well and turn visitors into enquiries, with a CMS your team can update without a developer.",
     layer: "experience",
-    mockup: "mobile",
-    deliverables: ["Product strategy & UX", "Design systems", "iOS / Android / cross-platform", "Web applications", "Customer portals"],
-    stack: ["Next.js", "React Native", "Swift", "Kotlin", "TypeScript"],
+    mockup: "website",
+    deliverables: ["Corporate websites", "Landing pages", "SEO", "CMS", "Analytics setup"],
+    stack: ["Next.js", "React", "Headless CMS", "Analytics"],
   },
   {
-    slug: "commerce",
+    slug: "apps",
     index: "02",
-    title: "Commerce Platforms",
-    kicker: "Digital commerce",
+    title: "Web & Mobile Apps",
+    kicker: "Booking apps · portals · dashboards",
     summary:
-      "Headless storefronts, marketplaces and B2B ordering built for speed and conversion, wired into inventory, payments, fulfilment and finance.",
+      "Booking apps, customer portals, dashboards and progressive web apps, designed around how your customers and teams actually work.",
+    layer: "experience",
+    mockup: "mobile",
+    deliverables: ["Booking apps", "Customer portals", "Dashboards", "PWAs", "iOS & Android"],
+    stack: ["Flutter", "React", "Next.js", "Supabase"],
+  },
+  {
+    slug: "custom-software",
+    index: "03",
+    title: "Custom Software",
+    kicker: "Automation · integrations · APIs",
+    summary:
+      "Software built for the way your business runs: automation, AI workflows, integrations and APIs that remove manual work and connect your tools.",
+    layer: "foundation",
+    mockup: "workflow",
+    deliverables: ["Process automation", "AI workflows", "Integrations", "APIs", "Internal tools"],
+    stack: ["Node.js", "Python", "Supabase", "Cloud"],
+  },
+  {
+    slug: "e-commerce",
+    index: "04",
+    title: "E-Commerce",
+    kicker: "Online stores & payments",
+    summary:
+      "Online stores that sell: product catalogues, smooth checkout and payments, and the analytics to see what’s working.",
     layer: "experience",
     mockup: "storefront",
-    deliverables: ["Headless storefronts", "Marketplaces", "B2B ordering portals", "Payments & checkout", "Catalogue & PIM"],
-    stack: ["Shopify Plus", "commercetools", "Medusa", "Stripe", "Razorpay"],
+    deliverables: ["Online stores", "Payments", "Catalogues", "Order management", "Analytics"],
+    stack: ["Shopify", "Next.js", "Razorpay", "Analytics"],
+  },
+  {
+    slug: "business-suites",
+    index: "05",
+    title: "End-to-End Business Suites",
+    kicker: "ERP · CRM · billing · BI",
+    summary:
+      "One connected system for operations: ERP, CRM, billing and BI reports, so every team works from the same live numbers.",
+    layer: "applications",
+    mockup: "erp",
+    deliverables: ["ERP", "CRM", "Billing", "BI reports", "Training & rollout"],
+    stack: ["Custom suites", "Supabase", "Python", "Analytics"],
   },
   {
     slug: "ai-automation",
-    index: "03",
-    title: "AI & Intelligent Automation",
-    kicker: "Agents & copilots",
+    index: "06",
+    title: "AI & Automation",
+    kicker: "AI-native by default",
     summary:
-      "Assistants, agents and automations that act on your real systems. We put them into the workflows where time and revenue actually leak.",
+      "Smart automation, predictive insight and customer-facing assistants, built into your systems from day one rather than bolted on later.",
     layer: "intelligence",
     mockup: "assistant",
-    deliverables: ["AI readiness assessment", "Agentic workflows", "Sales & support copilots", "Document intelligence", "Evaluation & guardrails"],
-    stack: ["LLM APIs", "RAG", "Vector search", "Python", "Workflow engines"],
-  },
-  {
-    slug: "enterprise-systems",
-    index: "04",
-    title: "Enterprise Systems",
-    kicker: "ERP · CRM · Operations",
-    summary:
-      "The operational backbone: ERP, CRM and custom line-of-business systems, implemented or built to fit how your teams really work.",
-    layer: "applications",
-    mockup: "erp",
-    deliverables: ["ERP implementation", "CRM customisation", "Custom operations software", "Legacy modernisation", "Process mapping"],
-    stack: ["Odoo", "ERPNext", "Salesforce", "Zoho", "Node / .NET"],
-  },
-  {
-    slug: "data-analytics",
-    index: "05",
-    title: "Data & Analytics",
-    kicker: "Decision intelligence",
-    summary:
-      "One reliable version of the truth: pipelines, warehouses and dashboards leadership trusts, and the foundation your AI work needs.",
-    layer: "data",
-    mockup: "dashboard",
-    deliverables: ["Data architecture", "ETL / ELT pipelines", "Warehouse & lakehouse", "BI dashboards", "Forecasting models"],
-    stack: ["BigQuery", "Snowflake", "dbt", "Airbyte", "Power BI"],
-  },
-  {
-    slug: "cloud-integration",
-    index: "06",
-    title: "Cloud & Integration",
-    kicker: "Infrastructure & APIs",
-    summary:
-      "Secure, observable cloud infrastructure and the integration layer that lets every system you own talk to every other.",
-    layer: "foundation",
-    mockup: "workflow",
-    deliverables: ["Cloud architecture", "API & integration layer", "DevOps & CI/CD", "Observability", "Security reviews"],
-    stack: ["AWS", "GCP", "Azure", "Kubernetes", "Terraform"],
+    deliverables: ["Smart automation", "Predictive insight", "Customer assistants", "AI workflows", "LLM integrations"],
+    stack: ["AI & LLMs", "Python", "Cloud", "Analytics"],
   },
 ];
 
@@ -179,7 +214,7 @@ export const projects: Project[] = [
     title: "One commerce platform for 140 stores and a website",
     sector: "Retail",
     year: "2025",
-    services: ["Commerce Platforms", "Enterprise Systems", "Data & Analytics"],
+    services: ["E-Commerce", "End-to-End Business Suites"],
     stack: ["Next.js", "commercetools", "Odoo", "BigQuery"],
     mockup: "storefront",
     tone: "ultra",
@@ -205,7 +240,7 @@ export const projects: Project[] = [
     title: "An AI sales agent that qualifies every lead in minutes",
     sector: "Real Estate",
     year: "2025",
-    services: ["AI & Intelligent Automation", "Enterprise Systems"],
+    services: ["AI & Automation", "End-to-End Business Suites"],
     stack: ["LLM APIs", "RAG", "Salesforce", "WhatsApp API"],
     mockup: "assistant",
     tone: "ink",
@@ -231,7 +266,7 @@ export const projects: Project[] = [
     title: "Modernising finance and operations for a manufacturer",
     sector: "Manufacturing",
     year: "2024",
-    services: ["Enterprise Systems", "Cloud & Integration"],
+    services: ["End-to-End Business Suites", "Custom Software"],
     stack: ["ERPNext", "Python", "AWS", "Power BI"],
     mockup: "erp",
     tone: "bone",
@@ -257,7 +292,7 @@ export const projects: Project[] = [
     title: "A decision-intelligence layer for a logistics network",
     sector: "Logistics",
     year: "2024",
-    services: ["Data & Analytics", "AI & Intelligent Automation"],
+    services: ["End-to-End Business Suites", "AI & Automation"],
     stack: ["Snowflake", "dbt", "Airbyte", "Forecasting"],
     mockup: "dashboard",
     tone: "ultra",
@@ -283,7 +318,7 @@ export const projects: Project[] = [
     title: "A care companion app that patients keep opening",
     sector: "Healthcare",
     year: "2024",
-    services: ["Product Engineering", "Cloud & Integration"],
+    services: ["Web & Mobile Apps", "Custom Software"],
     stack: ["React Native", "Node.js", "FHIR", "GCP"],
     mockup: "mobile",
     tone: "ember",
@@ -309,7 +344,7 @@ export const projects: Project[] = [
     title: "Automating field service from dispatch to invoice",
     sector: "Energy",
     year: "2023",
-    services: ["Cloud & Integration", "Product Engineering", "AI & Intelligent Automation"],
+    services: ["Custom Software", "Web & Mobile Apps", "AI & Automation"],
     stack: ["Workflow engine", "Kotlin", "Azure", "Document AI"],
     mockup: "workflow",
     tone: "ink",
@@ -331,18 +366,19 @@ export const projects: Project[] = [
 ];
 
 export const process = [
-  { n: "01", title: "Discover", text: "Workshops with your teams to understand the business, the users and the systems already in place.", out: "Opportunity map" },
-  { n: "02", title: "Architect", text: "We design the experience and the system together: interfaces, data model, integrations, security.", out: "Blueprint & prototype" },
-  { n: "03", title: "Build", text: "Senior engineers ship in short, visible cycles. You see working software every two weeks.", out: "Production releases" },
-  { n: "04", title: "Launch", text: "Migration, testing, training and a calm go-live, with monitoring in place from the first minute.", out: "Live platform" },
-  { n: "05", title: "Evolve", text: "We stay on: measuring, improving and adding intelligence as the business grows.", out: "Ongoing roadmap" },
+  { n: "01", title: "Discover", text: "We map your workflows, your customers and your goals before anything is designed.", out: "A clear plan & estimate" },
+  { n: "02", title: "Design", text: "Brand-true interfaces you review early, so there are no surprises later.", out: "Approved designs" },
+  { n: "03", title: "Develop", text: "Scalable, secure builds with AI automation built in, shipped in visible steps.", out: "Working software" },
+  { n: "04", title: "Deliver & Stay", text: "Launch, training for your team, and long-term support as you grow.", out: "Live product + support" },
 ];
 
 export const principles = [
-  { n: "i", title: "Systems, not screens", text: "A beautiful interface is only as good as the systems behind it. We design both, together." },
-  { n: "ii", title: "Senior by default", text: "The people in the pitch build the product. Small teams of experienced engineers and designers." },
-  { n: "iii", title: "Useful intelligence", text: "AI where it moves a number you care about, with evaluation and guardrails, not as decoration." },
-  { n: "iv", title: "Built to be owned", text: "Clean code, documentation and handover. Your platform should never hold you hostage." },
+  { n: "i", title: "Industry know-how", text: "We’ve built for food, travel, recruitment, gaming, retail, manufacturing and energy. We understand your business, not just the code." },
+  { n: "ii", title: "One accountable team", text: "Design, development and support under one roof. One partner from idea to growth." },
+  { n: "iii", title: "Fast, visible progress", text: "You see working software early and often, not a big reveal at the end." },
+  { n: "iv", title: "Privacy by design", text: "Your data stays yours. We never sell it, and we build security in from the start." },
+  { n: "v", title: "Built to scale", text: "Architecture that grows with your customers, your team and your ambitions." },
+  { n: "vi", title: "Support after launch", text: "Training, maintenance and continuous improvement long after go-live." },
 ];
 
 export const engagements = [

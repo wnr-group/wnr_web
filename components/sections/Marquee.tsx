@@ -1,6 +1,8 @@
 import { Mark } from "@/components/ui/Icons";
 
-const words = ["Commerce", "Intelligence", "Enterprise", "Data", "Cloud", "Product"];
+import { industries } from "@/lib/content";
+
+const words = industries;
 
 /* A slow typographic band between chapters, alternating solid and
    outlined words, punctuated by the WnR mark. */
@@ -16,8 +18,14 @@ export function Marquee() {
     </div>
   );
   return (
-    <section className="mq" aria-hidden>
-      <div className="mq__track">{[row("a"), row("b")]}</div>
+    <section className="mq" aria-label="Industry expertise">
+      <div className="wrap mq__head">
+        <span className="label label--dot">Industry expertise</span>
+        <span className="label">Food · Travel · Recruitment · Gaming · Retail · Manufacturing · Energy · and more</span>
+      </div>
+      <div className="mq__track" aria-hidden>
+        {[row("a"), row("b")]}
+      </div>
     </section>
   );
 }

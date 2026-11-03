@@ -112,51 +112,49 @@ vec3 albedo(int i, vec3 q, bool isTop, out float gloss, out float specK){
   vec3 c;
   gloss = 24.0; specK = 0.18;
   if (i == 0){                      // Foundation — graphite + server tiles
-    c = lin(vec3(0.05, 0.05, 0.065));
-    gloss = 60.0; specK = 0.5;
+    c = lin(vec3(0.03, 0.14, 0.095));
+    gloss = 50.0; specK = 0.4;
     if (isTop){
       for (int x = -1; x <= 1; x++) for (int z = -1; z <= 1; z++){
         vec2 cc = vec2(float(x), float(z)) * 0.56;
         float t = fill(sdBox2(uv - cc, vec2(0.2), 0.05));
-        c = mix(c, lin(vec3(0.11, 0.11, 0.14)), t);
+        c = mix(c, lin(vec3(0.06, 0.22, 0.16)), t);
         float led = fill(length(uv - cc - vec2(0.12, -0.12)) - 0.025);
-        c = mix(c, lin(vec3(0.25, 0.9, 0.62)) * 2.2, led);
+        c = mix(c, lin(vec3(0.78, 0.95, 0.42)) * 1.8, led);
       }
     }
   } else if (i == 1){               // Data — warm sand + bar chart
-    c = lin(vec3(0.13, 0.13, 0.17));
-    gloss = 50.0; specK = 0.45;
+    c = lin(vec3(0.86, 0.92, 0.88));
     if (isTop){
       for (int k = 0; k < 8; k++){
         float x = -0.66 + float(k) * 0.19;
         float h = 0.25 + 0.6 * fract(sin(float(k) * 12.9898) * 43758.5453);
         if (k == 5) h = 0.95;
         float b = fill(sdBox2(uv - vec2(x, 0.62 - h * 0.65), vec2(0.06, h * 0.65), 0.012));
-        vec3 bc = (k == 5) ? lin(vec3(1.0, 0.42, 0.24)) * 1.6 : lin(vec3(0.30, 0.29, 0.38));
+        vec3 bc = (k == 5) ? lin(vec3(0.78, 0.95, 0.42)) : lin(vec3(0.60, 0.72, 0.65));
         c = mix(c, bc, b);
       }
     }
   } else if (i == 2){               // Applications — porcelain + table rows
-    c = lin(vec3(0.21, 0.21, 0.27));
-    gloss = 50.0; specK = 0.45;
+    c = lin(vec3(0.975, 0.985, 0.978));
     if (isTop){
       for (int k = 0; k < 6; k++){
         float z = -0.62 + float(k) * 0.25;
         float w = 0.3 + 0.35 * fract(sin(float(k) * 7.31) * 9831.3);
         float r = fill(sdBox2(uv - vec2(-0.62 + w, z), vec2(w, 0.035), 0.03));
-        vec3 rc = (k == 1) ? lin(vec3(0.48, 0.36, 1.0)) * 1.6 : lin(vec3(0.40, 0.40, 0.48));
+        vec3 rc = (k == 1) ? lin(vec3(0.04, 0.54, 0.36)) : lin(vec3(0.76, 0.82, 0.79));
         c = mix(c, rc, r);
       }
     }
   } else if (i == 3){               // Intelligence — ultramarine + network
-    c = lin(vec3(0.48, 0.36, 1.0));
+    c = lin(vec3(0.05, 0.62, 0.40));
     gloss = 90.0; specK = 0.9;
     if (isTop){
       vec2 h = vec2(0.0);
       vec2 n0 = vec2(-0.6, -0.5), n1 = vec2(0.62, -0.58), n2 = vec2(-0.5, 0.6), n3 = vec2(0.58, 0.55);
       float l = min(min(sdSeg(uv, n0, h), sdSeg(uv, n1, h)), min(sdSeg(uv, n2, h), sdSeg(uv, n3, h)));
       l = min(l, min(sdSeg(uv, n0, n2), sdSeg(uv, n1, n3)));
-      c = mix(c, lin(vec3(0.75, 0.72, 1.0)), (1.0 - smoothstep(0.004, 0.012, l)) * 0.8);
+      c = mix(c, lin(vec3(0.75, 0.97, 0.85)), (1.0 - smoothstep(0.004, 0.012, l)) * 0.8);
       float nd = min(min(length(uv - n0), length(uv - n1)), min(length(uv - n2), length(uv - n3))) - 0.05;
       c = mix(c, vec3(1.0), fill(nd));
       float hub = abs(length(uv - h) - 0.12) - 0.014;
@@ -164,7 +162,7 @@ vec3 albedo(int i, vec3 q, bool isTop, out float gloss, out float specK){
       c = mix(c, vec3(1.0), fill(length(uv - h) - 0.04));
     }
   } else {                          // Experience — white + interface tiles
-    c = lin(vec3(0.93, 0.925, 0.96));
+    c = lin(vec3(0.99, 0.995, 0.99));
     if (isTop){
       // drop shadows under tiles
       float s = min(min(sdBox2(uv - vec2(-0.3, 0.0), vec2(0.46, 0.72), 0.06),
@@ -174,17 +172,17 @@ vec3 albedo(int i, vec3 q, bool isTop, out float gloss, out float specK){
       float a = fill(sdBox2(uv - vec2(-0.3, 0.0), vec2(0.46, 0.72), 0.06));
       c = mix(c, vec3(1.0), a);
       float ab = fill(sdBox2(uv - vec2(-0.3, 0.42), vec2(0.4, 0.26), 0.04));
-      c = mix(c, lin(vec3(0.85, 0.82, 1.0)), ab);
+      c = mix(c, lin(vec3(0.85, 0.96, 0.9)), ab);
       for (int k = 0; k < 3; k++){
         float r = fill(sdBox2(uv - vec2(-0.42 + float(k) * 0.02, -0.48 + float(k) * 0.14), vec2(0.28 - float(k) * 0.07, 0.025), 0.02));
         c = mix(c, lin(vec3(0.82, 0.81, 0.79)), r);
       }
       float b = fill(sdBox2(uv - vec2(0.48, -0.38), vec2(0.3, 0.3), 0.06));
-      c = mix(c, lin(vec3(0.48, 0.36, 1.0)), b);
+      c = mix(c, lin(vec3(0.04, 0.54, 0.36)), b);
       float bl = fill(sdBox2(uv - vec2(0.44, -0.46), vec2(0.18, 0.025), 0.02));
-      c = mix(c, lin(vec3(0.7, 0.66, 1.0)), bl);
+      c = mix(c, lin(vec3(0.6, 0.9, 0.75)), bl);
       float d = fill(sdBox2(uv - vec2(0.48, 0.4), vec2(0.3, 0.3), 0.06));
-      c = mix(c, lin(vec3(0.95, 0.93, 0.89)), d);
+      c = mix(c, lin(vec3(0.78, 0.95, 0.42)), d);
       float dl = fill(sdBox2(uv - vec2(0.44, 0.32), vec2(0.18, 0.025), 0.02));
       c = mix(c, lin(vec3(0.8, 0.78, 0.74)), dl);
       gloss = 30.0; specK = 0.15;
@@ -206,7 +204,7 @@ void main(){
   vec3 u = cross(r, f);
   vec3 rd = normalize(uv.x * r + uv.y * u + uFl * f);
 
-  const vec3 ULTRA = vec3(0.196, 0.107, 1.0);
+  const vec3 ULTRA = vec3(0.004, 0.32, 0.15);
   const vec3 L = normalize(vec3(-0.55, 0.86, 0.42));
 
   // March only inside the stack's bounding volume (with an aura margin)
@@ -250,10 +248,10 @@ void main(){
       float line = 1.0 - smoothstep(0.0, 0.03, min(gg.x, gg.y));
       vec2 gm = abs(fract(g) - 0.5);
       float major = 1.0 - smoothstep(0.0, 0.02, min(gm.x, gm.y));
-      float occ = clamp((1.0 - sh) * 0.5 + (1.0 - ao) * 0.6, 0.0, 0.85);
-      float glow = exp(-1.3 * max(slab(toLocal(p), 3), 0.0)) * 0.42 * sh;
-      float gridA = (line * 0.07 + major * 0.14) * fade * (0.4 + 0.6 * sh);
-      vec3 ink = vec3(0.0);
+      float occ = clamp((1.0 - sh) * 0.3 + (1.0 - ao) * 0.5, 0.0, 0.7);
+      float glow = exp(-1.6 * max(slab(toLocal(p), 3), 0.0)) * 0.14 * sh;
+      float gridA = (line * 0.05 + major * 0.09) * fade;
+      vec3 ink = vec3(0.004, 0.03, 0.02);
       vec3 col = ink * occ * fade + ULTRA * (gridA + glow * fade);
       float a = clamp(occ * fade + gridA + glow * fade, 0.0, 1.0);
       outc = vec4(col, a);
@@ -270,8 +268,8 @@ void main(){
       float sh = softShadow(p + n * 0.003, L);
       float ao = calcAO(p, n, 0.35);
       float dif = clamp(dot(n, L), 0.0, 1.0) * sh;
-      vec3 sky = lin(vec3(0.78, 0.76, 0.9));
-      vec3 gnd = lin(vec3(0.16, 0.13, 0.3));
+      vec3 sky = lin(vec3(1.0, 1.0, 0.98));
+      vec3 gnd = lin(vec3(0.6, 0.68, 0.63));
       vec3 amb = mix(gnd, sky, n.y * 0.5 + 0.5);
       vec3 hv = normalize(L - rd);
       float spe = pow(clamp(dot(n, hv), 0.0, 1.0), gloss) * dif * specK * 2.0;
@@ -282,20 +280,20 @@ void main(){
       col += fre * amb * 0.18 * ao;
       // cool violet rim light from behind for silhouette definition
       vec3 R = normalize(vec3(0.6, 0.35, -0.75));
-      col += ULTRA * pow(clamp(dot(n, R), 0.0, 1.0), 2.0) * 0.35;
+      col += ULTRA * pow(clamp(dot(n, R), 0.0, 1.0), 2.0) * 0.12;
       // light-emitting edge lines (the 'engineered' outline)
       vec2 ae = vec2(HX) - abs(q.xz);
       float edge = min(ae.x, ae.y);
       float topEdge = HY - q.y;
       float lineA = isTop ? (1.0 - smoothstep(0.004, 0.016, edge)) : (1.0 - smoothstep(0.004, 0.018, topEdge)) * 0.8;
-      col += ULTRA * lineA * (id == 4 ? 0.6 : 1.4);
+      col = mix(col, (id == 0 ? vec3(0.45, 0.85, 0.3) : ULTRA * 2.2), lineA * (id == 0 ? 0.55 : 0.28));
 
       // Ultramarine light spilling from the Intelligence layer
       if (id != 3){
         float dI = slab(toLocal(p), 3);
-        col += ULTRA * alb * exp(-dI * 6.0) * 0.55;
+        col += ULTRA * alb * exp(-dI * 6.0) * 0.8;
       } else {
-        col += ULTRA * 0.12 + ULTRA * fre * 0.6;
+        col += ULTRA * 0.15 + vec3(0.3, 0.9, 0.6) * fre * 0.25;
       }
       // Active layer: rim of light
       if (abs(float(id) - uActive) < 0.5){
@@ -306,7 +304,7 @@ void main(){
   }
 
   // Soft aura around the Intelligence layer (in air)
-  float aura = exp(-minIntel * 4.0) * 0.32;
+  float aura = exp(-minIntel * 5.0) * 0.14;
   outc.rgb += ULTRA * aura * (1.0 - outc.a);
   outc.a = clamp(outc.a + aura * (1.0 - outc.a), 0.0, 1.0);
 

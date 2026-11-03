@@ -7,11 +7,11 @@ import { ArrowRight } from "@/components/ui/Icons";
 
 const text: { w: string; em?: boolean; ultra?: boolean }[] = [];
 const push = (s: string, o: { em?: boolean; ultra?: boolean } = {}) => s.split(" ").forEach((w) => text.push({ w, ...o }));
-push("We are an engineering studio for companies with");
-push("serious ambitions.", { em: true });
-push("We design, build and connect the systems behind the business: commerce, operations, data and");
-push("intelligence,", { ultra: true });
-push("until an idea becomes a platform that simply runs.");
+push("We’re a technology partner focused on one thing:");
+push("your growth.", { em: true });
+push("Industry know-how from food, travel, recruitment, gaming, retail, manufacturing and energy, turned into the");
+push("systems", { ultra: true });
+push("your business runs on every day.");
 
 export function Manifesto() {
   const ref = useRef<HTMLElement>(null);
@@ -22,7 +22,7 @@ export function Manifesto() {
       <div className="wrap grid-12">
         <div className="manifesto__side">
           <span className="label sheet__fig">FIG. 02</span>
-          <span className="label">The studio</span>
+          <span className="label">Who we are</span>
         </div>
         <p className="manifesto__text">
           {text.map((t, i) => (
@@ -37,17 +37,17 @@ export function Manifesto() {
         </p>
         <div className="manifesto__facts">
           {[
-            ["Model", "Design + engineering, one team"],
-            ["Teams", "Senior, small, accountable"],
-            ["Base", "India, working worldwide"],
+            ["Customers", "75+ and growing"],
+            ["Builds", "AI-native, end to end"],
+            ["Base", "TIDEL Park, Chennai"],
           ].map(([k, v]) => (
             <div key={k} className="manifesto__fact">
               <span className="label">{k}</span>
               <span>{v}</span>
             </div>
           ))}
-          <Link href="/studio" className="link-line manifesto__link">
-            Inside the studio <ArrowRight />
+          <Link href="/about" className="link-line manifesto__link">
+            About WnR <ArrowRight />
           </Link>
         </div>
       </div>

@@ -39,21 +39,21 @@ export function Capabilities() {
   return (
     <section ref={sectionRef} className="caps section" aria-labelledby="caps-title">
       <div className="wrap">
-        <SheetHeader fig="03" title="Capabilities" aside="Select a layer" />
+        <SheetHeader fig="03" title="Services" aside="Select a service" />
         <div className="caps__intro">
           <h2 id="caps-title" className="t-d1">
-            Six disciplines.
+            Everything you need.
             <br />
-            <span className="em">One</span> connected system.
+            <span className="em">One</span> partner.
           </h2>
           <p className="t-lead caps__introlead">
-            Most partners give you a piece. We engineer the whole: each capability is a layer of the same core, so what we
+            From your first website to a complete business suite, every service is a layer of the same core, so everything we
             build works together from day one.
           </p>
         </div>
 
         <div className="caps__grid">
-          <div className="caps__list" role="tablist" aria-label="Capabilities" aria-orientation="vertical">
+          <div className="caps__list" role="tablist" aria-label="Services" aria-orientation="vertical">
             {capabilities.map((c, i) => (
               <button
                 key={c.slug}
@@ -129,7 +129,7 @@ export function Capabilities() {
                 </div>
               </div>
             </div>
-            <Link href={`/capabilities#${cap.slug}`} className="link-line">
+            <Link href={`/services#${cap.slug}`} className="link-line">
               Explore {cap.title} <ArrowRight />
             </Link>
           </div>
