@@ -1,0 +1,456 @@
+/* =====================================================================
+   MOMENT 03 — AI & Intelligent Automation (night)
+   ===================================================================== */
+.aim {
+  --t: clamp(0, calc((var(--p, 0) - 0.12) * 3.2), 1);
+  --t2: clamp(0, calc((var(--p, 0) - 0.36) * 3.6), 1);
+  --t3: clamp(0, calc((var(--p, 0) - 0.62) * 3.8), 1);
+  --e: 1;
+  position: relative;
+  height: 290vh;
+  background: var(--bone);
+  color: #fff;
+}
+.aim__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  min-height: 680px;
+  overflow: hidden;
+  background: radial-gradient(60% 50% at 50% 62%, rgba(123, 92, 255, 0.16), transparent 70%), var(--night);
+  clip-path: inset(calc((1 - var(--e)) * 9vh) calc((1 - var(--e)) * 6vw) calc((1 - var(--e)) * 0vh) round calc((1 - var(--e)) * 36px));
+}
+.aim__sticky > * {
+  transform: scale(calc(0.94 + var(--e) * 0.06));
+  transform-origin: 50% 0;
+}
+.aim__sticky > .aim__field {
+  transform: translateX(-50%) scale(calc(0.94 + var(--e) * 0.06));
+}
+.aim__bg {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask: radial-gradient(60% 60% at 50% 62%, #000, transparent 80%);
+  mask: radial-gradient(60% 60% at 50% 62%, #000, transparent 80%);
+}
+.aim__bg::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 62%;
+  width: 70vmin;
+  height: 70vmin;
+  transform: translate(-50%, -50%) scale(calc(0.4 + var(--t2) * 0.8));
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(58, 43, 255, 0.42), transparent);
+  opacity: calc(var(--t2) * 0.9);
+}
+.aim__top {
+  position: relative;
+  padding-top: 96px;
+}
+.aim__top .sheet {
+  margin-bottom: 0;
+}
+.aim__heads {
+  position: relative;
+  height: clamp(7rem, 12vw, 10.5rem);
+  margin-top: clamp(1.2rem, 2.5vw, 2rem);
+}
+.aim__head {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(6px);
+  transition: opacity 0.7s var(--ease-out), transform 0.9s var(--ease-out), filter 0.7s;
+}
+.aim__head.is-on {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+.aim__head .em {
+  color: #a79fff;
+}
+.aim__muted {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.aim__rail {
+  position: absolute;
+  left: var(--gutter);
+  bottom: clamp(1.5rem, 4vh, 2.5rem);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.aim__step {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.5s;
+}
+.aim__step b {
+  font-size: 0.6rem;
+  font-weight: 500;
+  width: 2.4rem;
+  height: 1.5rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  transition: all 0.5s;
+}
+.aim__step.is-done {
+  color: rgba(255, 255, 255, 0.65);
+}
+.aim__step.is-on {
+  color: #fff;
+}
+.aim__step.is-on b {
+  background: var(--ultra);
+  border-color: var(--ultra);
+}
+
+/* Field */
+.aim__field {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.5rem, 4vh, 3rem);
+  width: min(1120px, 88vw);
+  height: calc(100% - clamp(7rem, 12vw, 10.5rem) - 220px);
+  min-height: 380px;
+  transform: translateX(-50%);
+}
+.aim__wires {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.aim__wires path {
+  fill: none;
+  stroke: var(--ultra);
+  stroke-width: 0.16;
+  stroke-dasharray: 100;
+  stroke-dashoffset: calc(100 - var(--t2) * 100);
+  filter: drop-shadow(0 0 6px rgba(58, 43, 255, 0.8));
+}
+.aim[data-phase="2"] .aim__wires path {
+  stroke: #8d84ff;
+  stroke-dasharray: 1 1.6;
+  animation: wire-flow 1.2s linear infinite;
+}
+
+.proc {
+  position: absolute;
+  left: calc((var(--cx) + (var(--ox) - var(--cx)) * var(--t)) * 1%);
+  top: calc((var(--cy) + (var(--oy) - var(--cy)) * var(--t)) * 1%);
+  z-index: 2;
+  min-width: 13.5rem;
+  transform: translate(-50%, -50%) rotate(calc(var(--cr) * (1 - var(--t)))) scale(var(--ps, 1));
+  padding: 0.85rem 1rem;
+  border-radius: var(--r-md);
+  background: var(--night-2);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: border-color 0.6s, background 0.6s, box-shadow 0.6s;
+}
+.proc::before {
+  content: "";
+  position: absolute;
+  right: 0.9rem;
+  top: 0.95rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ember);
+  box-shadow: 0 0 10px var(--ember);
+  transition: background 0.6s, box-shadow 0.6s;
+}
+.proc__k {
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+.proc__swap {
+  position: relative;
+  display: grid;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.proc__before,
+.proc__after {
+  grid-area: 1 / 1;
+  transition: opacity 0.5s, transform 0.6s var(--ease-out);
+  white-space: nowrap;
+}
+.proc__before {
+  color: rgba(255, 255, 255, 0.72);
+}
+.proc__after {
+  color: #fff;
+  opacity: 0;
+  transform: translateY(8px);
+}
+.aim[data-phase="1"] .proc,
+.aim[data-phase="2"] .proc {
+  border: 1px solid rgba(141, 132, 255, 0.5);
+}
+.aim[data-phase="2"] .proc {
+  background: #16162a;
+  box-shadow: 0 0 0 1px rgba(141, 132, 255, 0.35), 0 20px 40px -20px rgba(58, 43, 255, 0.6);
+}
+.aim[data-phase="2"] .proc::before {
+  background: #3fe0a0;
+  box-shadow: 0 0 10px #3fe0a0;
+}
+.aim[data-phase="2"] .proc__before {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+.aim[data-phase="2"] .proc__after {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--i) * 0.07s);
+}
+
+/* Hub */
+.aim__hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+}
+.aim__hubcore {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 132px;
+  height: 132px;
+  margin: -66px 0 0 -66px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  background: radial-gradient(circle at 35% 30%, #6b5fff, var(--ultra) 50%, var(--ultra-ink));
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset, 0 0 80px rgba(58, 43, 255, 0.7);
+  transform: scale(calc(var(--t2) * (1 - var(--t3))));
+  text-align: center;
+}
+.aim__hubcore .mono {
+  font-size: 0.6rem;
+  opacity: 0.7;
+}
+.aim__hubcore b {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.aim__ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 240px;
+  height: 240px;
+  margin: -120px 0 0 -120px;
+  border-radius: 50%;
+  border: 1px solid rgba(141, 132, 255, 0.35);
+  transform: scale(calc(var(--t2) * (1 + var(--t3) * 1.6)));
+  opacity: calc(var(--t2) * (1 - var(--t3) * 0.6));
+}
+.aim__ring--2 {
+  width: 360px;
+  height: 360px;
+  margin: -180px 0 0 -180px;
+  border-style: dashed;
+  border-color: rgba(141, 132, 255, 0.2);
+}
+.aim__console {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%) scale(calc(0.6 + var(--t3) * 0.4));
+  opacity: var(--t3);
+  pointer-events: none;
+}
+.aim__console .ui {
+  --ui: clamp(5.2px, 0.62vw, 8px);
+  box-shadow: 0 0 0 1px rgba(141, 132, 255, 0.45), 0 0 120px rgba(58, 43, 255, 0.45), 0 40px 80px -30px #000;
+}
+
+@media (max-width: 900px) {
+  .aim {
+    height: 300vh;
+  }
+  .aim__field {
+    width: 64vw;
+    height: calc(100% - 250px);
+  }
+  .proc {
+    --ps: 0.88;
+    min-width: 0;
+    width: 9.6rem;
+    padding: 0.6rem 0.7rem;
+  }
+  .proc__swap {
+    font-size: 0.74rem;
+  }
+  .proc__before,
+  .proc__after {
+    white-space: normal;
+  }
+  .aim__rail {
+    display: none;
+  }
+  .aim__console .ui {
+    --ui: 4.6px;
+  }
+  .aim__ring--2 {
+    display: none;
+  }
+}
+@media (max-width: 520px) {
+  .proc {
+    width: 7.6rem;
+  }
+  .proc__k {
+    font-size: 0.55rem;
+  }
+}
+
+/* ================= AI products ================= */
+.aiprod {
+  background: var(--night);
+  color: #fff;
+  padding-top: clamp(3rem, 6vw, 5rem);
+}
+.aiprod__head {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.aiprod__title .em {
+  color: #a79fff;
+}
+.aiprod__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: flex-start;
+  justify-self: end;
+  max-width: 40ch;
+}
+.aiprod__intro .t-lead {
+  color: rgba(255, 255, 255, 0.72);
+}
+.aiprod__grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  gap: clamp(0.8rem, 1.6vw, 1.4rem);
+}
+.aiprod__card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--r-lg);
+  background: var(--night-2);
+  box-shadow: 0 0 0 1px var(--night-line);
+  overflow: hidden;
+}
+.aiprod__vis {
+  position: relative;
+  height: clamp(250px, 25vw, 360px);
+  overflow: hidden;
+  background: radial-gradient(80% 80% at 50% 100%, rgba(58, 43, 255, 0.35), transparent 70%), var(--night-3);
+}
+.aiprod__vis .ui {
+  position: absolute;
+  left: 50%;
+  top: 14%;
+  transform: translateX(-50%);
+  --ui: clamp(5.5px, 0.6vw, 8.4px);
+  transition: transform 0.9s var(--ease-out);
+}
+.aiprod__card:hover .aiprod__vis .ui {
+  transform: translateX(-50%) translateY(-10px);
+}
+.aiprod__vis--dash .ui,
+.aiprod__vis--flow .ui {
+  left: 12%;
+  transform: none;
+  --ui: clamp(5.5px, 0.58vw, 8px);
+}
+.aiprod__card:hover .aiprod__vis--dash .ui,
+.aiprod__card:hover .aiprod__vis--flow .ui {
+  transform: translateY(-10px);
+}
+.aiprod__meta {
+  padding: 1.6rem 1.6rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  border-top: 1px solid var(--night-line);
+}
+.t-ultra-l {
+  color: #a79fff;
+  font-size: 0.64rem;
+}
+.aiprod__meta h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+.aiprod__meta p {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.95rem;
+  max-width: 44ch;
+}
+@media (max-width: 980px) {
+  .aiprod__head {
+    grid-template-columns: 1fr;
+  }
+  .aiprod__intro {
+    justify-self: start;
+  }
+  .aiprod__grid {
+    grid-template-columns: 1fr;
+  }
+  .aiprod__vis .ui {
+    --ui: clamp(5px, 1.5vw, 8px);
+  }
+}
+
+@keyframes wire-flow {
+  to {
+    stroke-dashoffset: -5.2;
+  }
+}
+
+.aiprod .btn--ultra::before {
+  background: #fff;
+}
+.aiprod .btn--ultra:hover {
+  color: var(--ink);
+}
+.aiprod .btn--ultra:hover .btn__icon {
+  background: var(--ultra);
+  color: #fff;
+}

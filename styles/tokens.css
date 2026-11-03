@@ -1,0 +1,93 @@
+/* =====================================================================
+   WnR DESIGN SYSTEM — "The Living Blueprint"
+   ---------------------------------------------------------------------
+   Palette    Bone paper + Ink, one signature: WnR Ultramarine.
+              Ember is a signal colour (live, status, alerts) — sparingly.
+              Night is reserved for the AI & Automation moment.
+   Type       Instrument Sans (display/body), Instrument Serif italic
+              (emphasis), JetBrains Mono (annotations, data).
+   Space      8px base, fluid section rhythm.
+   ===================================================================== */
+
+:root {
+  /* — Surfaces (dark-first) — names kept for continuity:
+       bone = page ground, paper = raised, sand = surface, ink = primary text — */
+  --bone: #07070b;
+  --paper: #0c0c12;
+  --sand: #14141d;
+  --stone: #2a2a37;
+  --mute: #77758a;
+  --ink-3: #a19fb2;
+  --ink-2: #d4d2df;
+  --ink: #f5f4fa;
+  --on-light: #07070b;
+
+  /* — Signature: Electric Violet — */
+  --ultra: #7b5cff;
+  --ultra-deep: #5b3bff;
+  --ultra-ink: #2a1a8f;
+  --ultra-soft: rgba(123, 92, 255, 0.14);
+  --ultra-glow: rgba(123, 92, 255, 0.5);
+  --ultra-light: #b3a3ff;
+
+  /* — Logo (kept exactly as designed) — */
+  --logo-blue: #3a2bff;
+
+  /* — Signal — */
+  --ember: #ff6a3d;
+  --ember-soft: rgba(255, 106, 61, 0.16);
+  --leaf: #2fd38c;
+
+  /* — Night (deepest, for the AI moment & footer) — */
+  --night: #000000;
+  --night-2: #0d0d15;
+  --night-3: #16162a;
+  --night-line: rgba(255, 255, 255, 0.08);
+
+  /* — Lines — */
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.18);
+  --line-ultra: rgba(123, 92, 255, 0.55);
+
+  /* — Type families (overridden by next/font variables) — */
+  --font-sans: var(--ff-sans, "Instrument Sans"), "Inter Display", "Inter", system-ui, sans-serif;
+  --font-serif: var(--ff-serif, "Instrument Serif"), "Iowan Old Style", Georgia, serif;
+  --font-mono: var(--ff-mono, "JetBrains Mono"), ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* — Fluid type scale — */
+  --fs-mega: clamp(3.4rem, 9.2vw, 10.5rem);
+  --fs-hero: clamp(2.9rem, 7.2vw, 8.4rem);
+  --fs-d1: clamp(2.4rem, 5.6vw, 6rem);
+  --fs-d2: clamp(2rem, 4vw, 4.2rem);
+  --fs-d3: clamp(1.6rem, 2.6vw, 2.6rem);
+  --fs-lead: clamp(1.15rem, 1.5vw, 1.5rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.6875rem;
+
+  --lh-tight: 0.92;
+  --lh-snug: 1.08;
+  --tracking-display: -0.045em;
+  --tracking-mono: 0.06em;
+
+  /* — Space — */
+  --gutter: clamp(1rem, 3.2vw, 3rem);
+  --section: clamp(6rem, 13vw, 12rem);
+  --maxw: 1520px;
+
+  /* — Shape & depth — */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --shadow-ui: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 30px 60px -30px rgba(0, 0, 0, 0.8),
+    0 12px 24px -12px rgba(0, 0, 0, 0.6);
+  --shadow-float: 0 60px 120px -40px rgba(91, 59, 255, 0.45), 0 24px 48px -20px rgba(0, 0, 0, 0.8);
+
+  /* — Motion — */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 0.25s;
+  --dur-2: 0.6s;
+  --dur-3: 1.2s;
+}
